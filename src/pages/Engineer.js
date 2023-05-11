@@ -12,13 +12,7 @@ import Widget from "../components/Widget";
 engineer signup -> contact admin to put them in approved state -> login 
 */
 
-/*
-1. grab data 
-2. store data 
-3. grab the updated data nd store in a state 
-4. fetch the update api 
 
-*/
 
 const columns = [
   {
@@ -107,13 +101,13 @@ function Engineer() {
 
   // store the curr ticket details
   const editTicket = (ticketDetail) => {
-    console.log(ticketDetail);
+
 
     const ticket = {
       id: ticketDetail.id,
       title: ticketDetail.title,
       description: ticketDetail.description,
-      priority: ticketDetail.ticketPriority,
+      ticketPriority: ticketDetail.ticketPriority,
       reporter: ticketDetail.reporter,
       assignee: ticketDetail.assignee,
       status: ticketDetail.status,
@@ -124,17 +118,18 @@ function Engineer() {
 
   // grab the updated/ new data & store in a state
   const onTicketUpdate = (e) => {
-    if (e.target.name === "priority")
-      selectedCurrTicket.priority = e.target.value;
+    if (e.target.name === "ticketPriority")
+      selectedCurrTicket.ticketPriority = e.target.value;
     else if (e.target.name === "description")
       selectedCurrTicket.description = e.target.value;
     else if (e.target.name === "status")
       selectedCurrTicket.status = e.target.value;
 
     updateSelectedCurrTicket(Object.assign({}, selectedCurrTicket));
+
   };
 
-  console.log(selectedCurrTicket);
+
 
   // fetch put  api with updated details
   const updateTicket = (e) => {
@@ -270,8 +265,8 @@ function Engineer() {
                   <input
                     type="number"
                     className="form-control"
-                    name="priority"
-                    value={selectedCurrTicket.priority}
+                    name="ticketPriority"
+                    value={selectedCurrTicket.ticketPriority}
                     onChange={onTicketUpdate}
                   />
                 </div>

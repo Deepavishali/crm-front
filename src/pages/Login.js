@@ -4,17 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { userSignin, userSignup } from "../api/auth";
 // signup : userid, username, email, password
 // login: userid, password
-/*
-POST API 
-1. Grab the data 
-2. Store the data 
-3. Call the api */
 
-/*
-POST API SIGNUP
-1. Grab the data : userid, username, email, usertype, password
-2. Store the data : username, email
-3. Call the api */
+
 function Login() {
   const [showSignup, setShowSignup] = useState(false);
   const [message, setMessage] = useState("");
@@ -164,11 +155,11 @@ function Login() {
                             CUSTOMER
                           </Dropdown.Item>
                           <Dropdown.Item eventKey="ENGINEER">
-                            
+
                             ENGINEER
                           </Dropdown.Item>
                           <Dropdown.Item eventKey="ADMIN">
-                          ADMIN
+                            ADMIN
                           </Dropdown.Item>
                         </DropdownButton>
                       </div>
@@ -182,7 +173,7 @@ function Login() {
                     value={showSignup ? "Sign Up" : "Log In"}
                   />
                 </div>
-                <div style={{cursor: "pointer"}}
+                <div style={{ cursor: "pointer" }}
                   className="signup-btn text-center text-info"
                   onClick={toggleSignup}
                 >

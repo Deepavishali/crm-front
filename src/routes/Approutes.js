@@ -14,16 +14,7 @@ import "react-circular-progressbar/dist/styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "bootstrap-icons/font/bootstrap-icons.css";
-// 1st week : // LOGIN/ SIGNUP page -> for 3 types of users
-//  1. UI 2. API Integration 3. Final flow
 
-// 3 types of users :
-
-//  ADMIN : Log in , all tickets , all users -> give permisions to the user
-
-//  ENGINEER : Sign up , login after approval , edit tickets that are assigned to them -> edit the status
-
-// CUSTOMER : Sign up, log in, raise the ticket, edit the ticket status -> open/ close
 const ROLES = {
   CUSTOMER: "CUSTOMER",
   ADMIN: "ADMIN",

@@ -85,6 +85,7 @@ function Customer() {
     fetchTicket()
       .then(function (response) {
         setTicketDetails(response.data);
+       
         updateTicketCount(response.data);
       })
       .catch(function (error) {
@@ -97,6 +98,7 @@ function Customer() {
     e.preventDefault();
     const data = {
       title: e.target.title.value,
+      ticketPriority:e.target.ticketPriority.value,
       description: e.target.description.value,
     };
 
@@ -126,10 +128,10 @@ function Customer() {
       description: ticketDetail.description,
       assignee: ticketDetail.assignee,
       reporter: ticketDetail.reporter,
-      priority: ticketDetail.ticketPriority,
+      ticketPriority: ticketDetail.ticketPriority,
       status: ticketDetail.status,
     };
-
+    
     setSelectedCurrTicket(ticket);
     setTicketUpdationModal(true);
   };
@@ -139,10 +141,14 @@ function Customer() {
   const onTicketUpdate = (e) => {
     if (e.target.name === "description")
       selectedCurrTicket.description = e.target.value;
+    else if (e.target.name === "ticketPriority")
+      selectedCurrTicket.ticketPriority = e.target.value;
     else if (e.target.name === "status")
       selectedCurrTicket.status = e.target.value;
     updateSelectedCurrTicket(Object.assign({}, selectedCurrTicket));
+    console.log(selectedCurrTicket);
   };
+
 
   // 4. fetch the put api
   const updateTicket = (e) => {
@@ -285,6 +291,17 @@ function Customer() {
                 </div>
                 <div className="input-group m-1">
                   <label className="label label-md input-group-text">
+                    PRIORITY
+                  </label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    name="ticketPriority"
+                    required
+                  />
+                </div>
+                <div className="input-group m-1">
+                  <label className="label label-md input-group-text">
                     DESCRIPTION
                   </label>
                   <textarea
@@ -355,12 +372,12 @@ function Customer() {
                     Priority
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     className="form-control"
-                    name="priority"
-                    value={selectedCurrTicket.priority}
-                    disabled
-                  />
+                    name="ticketPriority"
+                    value={selectedCurrTicket.ticketPriority}
+                    onChange={onTicketUpdate}
+                    />
                 </div>
                 <div className="input-group m-1">
                   <label className="label label-md input-group-text">

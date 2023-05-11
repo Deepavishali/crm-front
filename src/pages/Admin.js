@@ -8,30 +8,6 @@ import Sidebar from "../components/Sidebar";
 import { fetchTicket, ticketUpdation } from "../api/tickets";
 import { getAllUser, updateUserData } from "../api/user.js";
 
-// css
-
-// TASKS :
-/*
-Create a common dynamic component for widgets ->  done
-// 1. GET API for users : userid
-// 2. Create a func getAllUsers() => fetch the api => staore the array of objects in state => userDetails
-Pass the userdetails in material table 
-
-// PUT API dor users : userid, updated new data -> change of status 
-1/ Grab the curr user using onRowClick
-2. STore the details of the user -> open a modal 
-3. Modal will show all the curr details -> print all user details in the user modal 
-4. Grab the new updated value and store it ina state 
-5. Fetch the put api -> userid, updated data-> log the response 
-*/
-
-// put logic
-/*
-1. Grab the curr ticket : ticket id , all the curr data along with it 
-2. Store the curr Ticket in a state -> display the curr ticket details in the modal 
-3. Grab the new updated values and store in a state
-4. Fetch the api with the new updated data 
-*/
 
 const columns = [
   { title: "ID", field: "id" },
@@ -265,7 +241,7 @@ function Admin() {
           color="secondary"
           title="BLOCKED"
           icon="slash-circle"
-          ticketCount={ticketStatusCount.bloocked}
+          ticketCount={ticketStatusCount.blocked}
           pathColor="darkblue"
         />
       </div>
@@ -380,9 +356,13 @@ function Admin() {
                   <label className="label input-group-text label-md">
                     Assignee
                   </label>
-                  <select className="form-control" name="assignee">
-                    <option>Utkarshini</option>
-                  </select>
+                  <input type="text"
+                    className="form-control"
+                    name="assignee"
+                    onChange={onTicketUpdate}
+                    value={selectedCurrTicket.assignee}
+                  />
+
                 </div>
                 {/* Onchange : grabbing teh new updates values from UI  */}
                 <div className="input-group mb-2">
