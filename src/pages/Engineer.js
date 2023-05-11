@@ -118,9 +118,7 @@ function Engineer() {
 
   // grab the updated/ new data & store in a state
   const onTicketUpdate = (e) => {
-    if (e.target.name === "ticketPriority")
-      selectedCurrTicket.ticketPriority = e.target.value;
-    else if (e.target.name === "description")
+     if (e.target.name === "description")
       selectedCurrTicket.description = e.target.value;
     else if (e.target.name === "status")
       selectedCurrTicket.status = e.target.value;
@@ -267,7 +265,7 @@ function Engineer() {
                     className="form-control"
                     name="ticketPriority"
                     value={selectedCurrTicket.ticketPriority}
-                    onChange={onTicketUpdate}
+                    disabled
                   />
                 </div>
 
