@@ -175,6 +175,7 @@ function Admin() {
       userStatus: userDetail.userStatus,
       userName: userDetail.name,
     };
+    console.log(data)
     updateUserData(userDetail.userId, data)
       .then(function (response) {
         if (response.status === 200) {
@@ -184,7 +185,7 @@ function Admin() {
           );
           userList[idx] = userDetail;
           closeUserModal();
-          toast.success("User detail updated successfully");
+          // toast.success("User detail updated successfully");
         }
       })
       .catch(function (error) {
@@ -529,7 +530,7 @@ function Admin() {
 
         <hr />
       </div>
-      <ToastContainer autoClose={5000}/>
+      <ToastContainer autoClose={5000} />
     </div>
   );
 }
