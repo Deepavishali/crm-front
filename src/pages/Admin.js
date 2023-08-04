@@ -7,7 +7,8 @@ import Widget from "../components/Widget";
 import Sidebar from "../components/Sidebar";
 import { fetchTicket, ticketUpdation } from "../api/tickets";
 import { getAllUser, updateUserData } from "../api/user.js";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const columns = [
   { title: "ID", field: "id" },
@@ -183,7 +184,7 @@ function Admin() {
           );
           userList[idx] = userDetail;
           closeUserModal();
-          setMessage("User detail updated successfully");
+          toast.success("User detail updated successfully");
         }
       })
       .catch(function (error) {
@@ -528,6 +529,7 @@ function Admin() {
 
         <hr />
       </div>
+      <ToastContainer autoClose={5000}/>
     </div>
   );
 }

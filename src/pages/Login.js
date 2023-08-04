@@ -2,6 +2,8 @@ import { useState } from "react";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { userSignin, userSignup } from "../api/auth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // signup : userid, username, email, password
 // login: userid, password
 
@@ -31,8 +33,9 @@ function Login() {
       .then(function (response) {
         if (response.status === 201) {
           setShowSignup(false);
-          setMessage("User Signed Up Successfully...");
+          toast.success("User Signed Up Successfully...");
         }
+        
       })
       .catch(function (error) {
         setMessage(error.response.data.message);
@@ -64,7 +67,10 @@ function Login() {
         if (response.data.userTypes === "CUSTOMER") navigate("/customer");
         else if (response.data.userTypes === "ENGINEER") navigate("/engineer");
         else if (response.data.userTypes === "ADMIN") navigate("/admin");
-        else navigate("/");
+        else 
+        toast.error("Access Restricted: Authorization Required for Engineer or Admin Login. Please seek admin approval or refer to the portfolio for valid credentials.")
+        toast.info("Admin Credentials: User ID - admin, Password - qwerty123")
+        toast.info("To proceed, log in using admin credentials and grant engineer access for your profile.")
       })
       .catch((error) => {
         setMessage(error.response.data.message);
@@ -187,6 +193,7 @@ function Login() {
           </div>
         </div>
       </div>
+      <ToastContainer autoClose={30000}/>
     </div>
   );
 }

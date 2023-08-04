@@ -8,6 +8,8 @@ import Sidebar from "../components/Sidebar";
 import Widget from "../components/Widget";
 
 import { ticketCreation, fetchTicket, ticketUpdation } from "../api/tickets";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // put logic
 /*
@@ -104,7 +106,7 @@ function Customer() {
 
     ticketCreation(data)
       .then(function (response) {
-        setMessage("Ticket Created Successfully!");
+        toast("Ticket Created Successfully!");
         setCreateTicketModal(false);
         fetchTickets();
       })
@@ -424,6 +426,7 @@ function Customer() {
           </Modal>
         ) : null}
       </div>
+      <ToastContainer autoClose={5000} />
     </div>
   );
 }

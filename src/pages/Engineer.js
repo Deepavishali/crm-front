@@ -7,7 +7,8 @@ import { fetchTicket, ticketUpdation } from "../api/tickets";
 
 import Sidebar from "../components/Sidebar";
 import Widget from "../components/Widget";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 /*
 engineer signup -> contact admin to put them in approved state -> login 
 */
@@ -134,7 +135,7 @@ function Engineer() {
     e.preventDefault();
     ticketUpdation(selectedCurrTicket.id, selectedCurrTicket)
       .then(function (res) {
-        setMessage("Ticket Updated Successfully!");
+        toast.success("Ticket Updated Successfully!");
         fetchTickets();
         closeTicketUpdationModal();
       })
@@ -315,6 +316,7 @@ function Engineer() {
           </Modal>
         ) : null}
       </div>
+      <ToastContainer autoClose={5000} />
     </div>
   );
 }
