@@ -7,7 +7,7 @@ import Widget from "../components/Widget";
 import Sidebar from "../components/Sidebar";
 import { fetchTicket, ticketUpdation } from "../api/tickets";
 import { getAllUser, updateUserData } from "../api/user.js";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const columns = [
